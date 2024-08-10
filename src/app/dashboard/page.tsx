@@ -1,10 +1,14 @@
+import AuthWrapper from '@/components/auth/AuthWrapper';
+import { DashboardMain } from '@/components/dashboard/DashboardMain';
 import React from 'react';
 
-export const Dashboard = () => {
+export const Dashboard = async () => {
   return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
+    <main>
+      <AuthWrapper>
+        <DashboardMain />
+      </AuthWrapper>
+    </main>
   );
 };
 
