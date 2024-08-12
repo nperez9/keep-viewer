@@ -27,11 +27,13 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { getKeepNotes } from '@/service/keep.service';
 import { getServerSession } from 'next-auth';
-import { User } from '@/types/user.type';
+import { authOptions } from '@/auth';
+import { AuthSession } from '@/types/user.type';
 
 export async function DashboardMain() {
-  const notes = await getKeepNotes();
-  const session = (await getServerSession()) as { user: User };
+  const { user } = (await getServerSession(authOptions)) as AuthSession;
+  const notes = await getKeepNotes(user.access_token);
+  console.log(notes);
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -40,7 +42,7 @@ export async function DashboardMain() {
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
               <Package2 className="h-6 w-6" />
-              <span className="">Acme Inc</span>
+              <span className="text-ellipsis">{user.name}</span>
             </Link>
             <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
               <Bell className="h-4 w-4" />

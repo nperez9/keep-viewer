@@ -15,6 +15,8 @@ export const AuthWrapper: React.FC<{ children: ReactNode }> = ({ children }) => 
     redirect('/login');
   }
 
+  console.log('session', session);
+
   return <>{children}</>;
 };
 
