@@ -25,8 +25,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { getKeepNotes } from '@/service/keep.service';
+import { getServerSession } from 'next-auth';
+import { User } from '@/types/user.type';
 
-export function DashboardMain() {
+export async function DashboardMain() {
+  const notes = await getKeepNotes();
+  const session = (await getServerSession()) as { user: User };
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
