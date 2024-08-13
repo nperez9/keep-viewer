@@ -8,15 +8,18 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
     }),
   ],
-  secret: process.env.JWT_SECRET,
   callbacks: {
-    async jwt({ token, account }: { token: any; account: any }) {
+    async jwt(accountStuff: { token: any; account: any }) {
+      console.log('accountStuff', accountStuff);
+      let { token, account } = accountStuff;
       if (account) {
         token = Object.assign({}, token, { access_token: account.access_token });
       }
       return token;
     },
-    async session({ session, token }: { session: any; token: any }) {
+    async session(sessionStuff: { session: any; token: any }) {
+      const { session, token } = sessionStuff;
+      console.log(sessionStuff);
       let newSession = session;
       if (session) {
         newSession = { ...session, user: { ...session.user, access_token: token.access_token } };

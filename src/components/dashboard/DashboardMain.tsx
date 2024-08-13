@@ -32,8 +32,8 @@ import { AuthSession } from '@/types/user.type';
 
 export async function DashboardMain() {
   const { user } = (await getServerSession(authOptions)) as AuthSession;
-  const notes = await getKeepNotes(user.access_token);
-  console.log(notes);
+  const notes = (await getKeepNotes(user.access_token)) as any;
+  console.log(notes, notes.error.details);
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
