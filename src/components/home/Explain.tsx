@@ -49,7 +49,6 @@ export function ExplainHome() {
               Or
             </div>
           </Separator>
-          {/* Form */}
           <form>
             <div className="mb-4">
               <Label htmlFor="firstName" className="sr-only">
@@ -73,7 +72,6 @@ export function ExplainHome() {
               <Button>Sign up</Button>
             </div>
           </form>
-          {/* End Form */}
         </div>
       </div>
       <img
