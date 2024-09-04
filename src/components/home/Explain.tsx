@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 
 export function ExplainHome() {
@@ -51,21 +50,21 @@ export function ExplainHome() {
           </Separator>
           <form>
             <div className="mb-4">
-              <Label htmlFor="firstName" className="sr-only">
+              <label htmlFor="firstName" className="sr-only">
                 Full name
-              </Label>
+              </label>
               <Input type="text" id="firstName" placeholder="Full name" />
             </div>
             <div className="mb-4">
-              <Label htmlFor="email" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Email
-              </Label>
+              </label>
               <Input type="email" id="email" placeholder="Email" />
             </div>
             <div className="mb-4">
-              <Label htmlFor="password" className="sr-only">
+              <label htmlFor="password" className="sr-only">
                 Password
-              </Label>
+              </label>
               <Input type="password" id="password" placeholder="Password" />
             </div>
             <div className="grid">
