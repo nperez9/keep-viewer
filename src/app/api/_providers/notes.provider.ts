@@ -10,5 +10,7 @@ export async function getNotes(): any {
 
 export async function createNote(note: Note) {
   const db = await JSONFilePreset(NOTES_DB, { notes: [] });
+  // @ts-ignore
+  db.notes.push(note);
   return await db.write();
 }
